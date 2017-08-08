@@ -1,0 +1,62 @@
+server:
+  port: ${zipkin.server.port:8700}
+  
+logging:
+  level:
+    org.springframework.cloud.sleuth: INFO
+    org.springframework.cloud.sleuth.trace: INFO
+    zipkin: INFO
+    io.zipkin: INFO
+  
+management:
+ security:
+  # do not lock-down metrics by default
+  # https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.5-Release-Notes#actuator-security
+  enabled: false
+
+####################################################################################
+# ZIPKIN locally uses in memory span store. Intent is to use ES as storage for Cloud 
+# environments which will require configuration similar to what is shown in profile 
+# "docker-demo-es". As an alternate storage option, cassandra could be used shown in 
+# local-int-cassandra profile 
+#####################################################################################
+---
+spring:
+  profiles: default, local-int
+zipkin:
+  sleuth:
+    enabled: false
+  storage:
+      type: mem
+---
+spring:
+  profiles: local-int-es
+zipkin:
+  sleuth:
+    enabled: false 
+  storage:
+    type: elasticsearch
+    elasticsearch:
+      cluster: ${ES_CLUSTER:docker-cluster}
+      hosts: ${ES_HOSTS:http://localhost:9200}
+      index: ${ES_INDEX:zipkin}
+      index-shards: ${ES_INDEX_SHARDS:5}
+      index-replicas: ${ES_INDEX_REPLICAS:1}      
+---
+spring:
+  profiles: docker-demo, aws-ci, aws-dev, aws-stage, aws-prod
+zipkin:
+  sleuth:
+    enabled: false 
+  storage:
+    type: elasticsearch
+    elasticsearch:
+      cluster: ${ES_CLUSTER:elasticsearch}
+      hosts: ${ES_HOSTS:http://elasticsearch:9200}
+      index: ${ES_INDEX:zipkin}
+      index-shards: ${ES_INDEX_SHARDS:5}
+      index-replicas: ${ES_INDEX_REPLICAS:1}
+      username: ${ES_USERNAME:elastic}
+      password: ${ES_PASSWORD:changeme}
+      
+
