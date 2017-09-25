@@ -1,4 +1,4 @@
-FROM jluck/ascent-base
+FROM ascent/ascent-base
 
 ENV JAR_FILE "/ascent-zipkin.jar"
 ADD target/ascent-zipkin-*.jar $JAR_FILE
