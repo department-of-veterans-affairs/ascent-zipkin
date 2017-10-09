@@ -7,12 +7,15 @@ logging:
     org.springframework.cloud.sleuth.trace: INFO
     zipkin: INFO
     io.zipkin: INFO
-  
-management:
- security:
-  # do not lock-down metrics by default
-  # https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.5-Release-Notes#actuator-security
-  enabled: false
+
+security:
+  user:
+    name: ${ascent.security.username:admin}
+    password: ${ascent.security.password:default}
+endpoints:
+  health:
+    sensitive: false
+management.health.rabbit.enabled: false
 
 ####################################################################################
 # ZIPKIN locally uses in memory span store. Intent is to use ES as storage for Cloud 
