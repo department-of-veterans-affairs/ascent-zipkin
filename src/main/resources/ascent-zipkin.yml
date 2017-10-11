@@ -1,6 +1,11 @@
 server:
   port: ${zipkin.server.port:8700}
-  
+info:
+  build:
+    version:  "@project.version@"
+    artifact: "@project.artifactId@"
+    name: "@project.name@"
+    description: "@project.description@"
 logging:
   level:
     org.springframework.cloud.sleuth: INFO
