@@ -14,8 +14,6 @@ logging:
     io.zipkin: INFO
 
 security:
-  basic:
-    enabled: true
   user:
     name: ${ascent.security.username:admin}
     password: ${ascent.security.password:default}
