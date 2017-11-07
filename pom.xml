@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>ascent-zipkin</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -74,6 +75,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        
+        <!-- Ascent Test Framework -->
+		<dependency>
+			<groupId>gov.va.ascent</groupId>
+			<artifactId>ascent-test-framework</artifactId>
+			<version>${ascent.test.framework.version}</version>
+			<scope>test</scope>
+		</dependency>
+        
         
     	<!--
     	<dependency>
