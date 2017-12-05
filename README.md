@@ -10,6 +10,6 @@ This is a repository for the ascent zipkin service that consumes the **instrumen
 **Service Application Ports**
 * Zipkin - 8700
 
-See [Ascent-Zipkin](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/Ascent-Zipkin) for additional details.
+See [Ascent-Zipkin](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/PLATFORM-:-Ascent-Zipkin) for additional details.
 
-See [Ascent Quick Start Guide](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/Ascent-Quick-Start-Guide) for the software prerequisites.
+See [Ascent Quick Start Guide](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/DEV-:-Platform-Quick-Start-Guide) for the software prerequisites.
