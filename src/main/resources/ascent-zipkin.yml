@@ -14,6 +14,8 @@ logging:
     io.zipkin: WARN
 
 security:
+  basic:
+    enabled: true
   user:
     name: ${ascent.security.username:admin}
     password: ${ascent.security.password:default}
@@ -28,8 +30,14 @@ management.health.rabbit.enabled: false
 # "docker-demo"
 #####################################################################################
 ---
+security:
+  basic:
+    enabled: false
 spring:
   profiles: default, local-int
+  sleuth:
+    stream:
+      enabled: false
 zipkin:
   sleuth:
     enabled: false
