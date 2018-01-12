@@ -8,5 +8,5 @@ RUN echo \
 'secret { \
     format = "elasticsearch.{{ key }}" \
     no_prefix = true \
-    path = "secret/ascent-zipkin/elasticsearch" \
+    path = "secret/ascent-zipkin" \
 }' >> $ENVCONSUL_CONFIG
