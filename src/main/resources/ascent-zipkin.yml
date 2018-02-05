@@ -14,6 +14,8 @@ logging:
     io.zipkin: WARN
 
 security:
+  basic:
+    enabled: true
   user:
     name: ${ascent.security.username:admin}
     password: ${ascent.security.password:default}
@@ -30,6 +32,11 @@ management.health.rabbit.enabled: false
 ---
 spring:
   profiles: default, local-int
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 zipkin:
   sleuth:
     enabled: false
