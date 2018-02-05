@@ -9,7 +9,6 @@ import org.springframework.cloud.sleuth.zipkin.stream.EnableZipkinStreamServer;
 import zipkin.server.EnableZipkinServer;
 
 @SpringBootApplication
-@EnableZipkinStreamServer
 @EnableDiscoveryClient
 public class AscentZipkinApplication {
 

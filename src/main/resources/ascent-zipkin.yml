@@ -30,13 +30,14 @@ management.health.rabbit.enabled: false
 # "docker-demo"
 #####################################################################################
 ---
+security:
+  basic:
+    enabled: false
 spring:
   profiles: default, local-int
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+  sleuth:
+    stream:
+      enabled: false
 zipkin:
   sleuth:
     enabled: false
