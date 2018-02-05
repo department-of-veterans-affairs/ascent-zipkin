@@ -63,10 +63,6 @@
 		</dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-stream</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-sleuth-zipkin-stream</artifactId>
         </dependency>
         <dependency>
@@ -102,6 +98,9 @@
 			<version>${ascent.test.framework.version}</version>
 			<scope>test</scope>
 		</dependency>
-    	
+    	        <dependency>
+            <groupId>gov.va.ascent</groupId>
+            <artifactId>ascent-framework</artifactId>
+        </dependency>
     </dependencies>
 </project>

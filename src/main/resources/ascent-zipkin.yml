@@ -30,9 +30,6 @@ management.health.rabbit.enabled: false
 # "docker-demo"
 #####################################################################################
 ---
-security:
-  basic:
-    enabled: false
 spring:
   profiles: default, local-int
   sleuth:
@@ -43,6 +40,9 @@ zipkin:
     enabled: false
   storage:
       type: mem
+security:
+  basic:
+    enabled: false      
 ---
 
 spring:
