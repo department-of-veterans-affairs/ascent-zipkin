@@ -13,3 +13,4 @@ This is a repository for the ascent zipkin service that consumes the **instrumen
 See [Ascent-Zipkin](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/PLATFORM-:-Ascent-Zipkin) for additional details.
 
 See [Ascent Quick Start Guide](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/DEV-:-Platform-Quick-Start-Guide) for the software prerequisites.
+
