@@ -60,5 +60,12 @@ zipkin:
       index-replicas: ${ES_INDEX_REPLICAS:1}
       username: ${zipkin.storage.elasticsearch.username:zipkin}
       password: ${zipkin.storage.elasticsearch.password:changeme}
+---
+spring:
+  profiles: aws-ci, aws-stage, aws-prod
+zipkin: 
+  storage:
+    elasticsearch:
+      hosts: ${ES_HOSTS:https://elastic.internal.vets-api.gov:9200}
       
 
