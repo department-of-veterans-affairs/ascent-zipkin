@@ -20,13 +20,9 @@ import gov.va.ascent.test.framework.selenium.BasePage;
 			 initialize(this);
 			 
 		 }
-
-		 //Home Button in Dashboard Navigation
-		 @FindBy (xpath="//div[@class='header clearfix']/nav/ul/li[1]/a")
-		 WebElement homebutton;
-		 
+ 
 		 //Zipkin Investigate system behavior in nav menu
-		 @FindBy (xpath="//A[@class='navbar-brand']")
+		 @FindBy (xpath="//div[@class='navbar-header']")
 		 WebElement systembehavior;
 		
 		 //Find a trace in nav menu
@@ -42,20 +38,22 @@ import gov.va.ascent.test.framework.selenium.BasePage;
 		 WebElement gototrace;
 		 
 		 //Service name dropdown 
-		 @FindBy (xpath="//form[@class='form-group']/ul/li[2]")
+		 @FindBy (xpath="//select[@id='serviceName']")
 		 WebElement servicename;
 		 
 		 //Span name dropdown 
-		 @FindBy (xpath="//form[@class='form-group']/ul/li[2]")
+		 @FindBy (xpath="//select[@id='spanName']")
 		 WebElement spanename;
 		 
-		 //start time dropdown
-		 @FindBy (xpath="//div[@class='form-control input-sm date-input'")
+		 //start time 
+		 @FindBy (xpath="//input[@id='startTs']")
 		 WebElement starttime;
 		 
-		 public String getHomeButtonValue() {
-			 return homebutton.getText();
-		 }
+		 //End time
+		//start time dropdown
+		 @FindBy (xpath="//input[@id='endTs']")
+		 WebElement endtime;
+		 
 		 
 		 public String getSystemBehavior() {
 			 return systembehavior.getText();
@@ -67,16 +65,19 @@ import gov.va.ascent.test.framework.selenium.BasePage;
 		 public String getDepencies() {
 			 return depencies.getText();
 		 }
-		 public String getgototrace() {
-			 return gototrace.getText();
+		 public WebElement getgototrace() {
+			 return gototrace;
 		 }
-		 public String getservicename() {
-			 return servicename.getText();
+		 public WebElement getservicename() {
+			 return servicename;
 		 }
-		 public String getspanname() {
-			 return spanename.getText();
+		 public WebElement getspanname() {
+			 return spanename;
 		 }
-		 public String getstarttime() {
-			 return starttime.getText();
+		 public WebElement getstarttime() {
+			 return starttime;
+		 }
+		 public WebElement getendtime() {
+			 return endtime;
 		 }
 	}

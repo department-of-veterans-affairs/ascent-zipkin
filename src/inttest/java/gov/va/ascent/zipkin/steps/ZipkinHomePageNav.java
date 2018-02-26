@@ -21,7 +21,7 @@ import gov.va.ascent.zipkin.util.ZipkinAppUtil;
 public class ZipkinHomePageNav extends BaseStepDef {
 
 	ZipkinHomePage homePage = null;
-	
+
 	final Logger log = LoggerFactory.getLogger(ZipkinHomePageNav.class);
 
 	@Before({ "@zipkindhomepagenav" })
@@ -33,39 +33,43 @@ public class ZipkinHomePageNav extends BaseStepDef {
 		WebDriver selenium = BasePage.getDriver();
 		ZipkinLoginPage loginPage = new ZipkinLoginPage(selenium);
 		loginPage.enterCredentialsandLogin();
-		//System.out.println("------------"+selenium.getCurrentUrl());
 		homePage = new ZipkinHomePage(selenium);
-		
+
 	}
 
 	@When("^the user is in zipkin dashboard page$")
 	public void makerequesustoappsurlGet() throws Throwable {
-		//invokeAPIUsingGet(ZipkinAppUtil.getBaseURL() + strURL, false);
-	}
-	@Then("^verify the investigate system behavior in the navigation menu$")
-	public void verifyInvestigareSystemBehavior () throws Throwable {
-		
-		//homePage.getHomeButtonValue();
-		//Assert.assertEquals(homePage.getHomeButtonValue(), "Home");
-		homePage.getSystemBehavior();
-		Assert.assertTrue(homePage.getSystemBehavior().contains("Zipkin"));
-		
-	}
-	@And("^verify the other links in the navigation menu$")
-	public void otherLinks () throws Throwable {
-		/*
-		homePage.getFindaTrace();
-		Assert.assertEquals(homePage.getFindaTrace(), "Find a trace");
-		homePage.getDepencies();
-		Assert.assertEquals(homePage.getDepencies(), "Dependencies");
-		*/
+		// invokeAPIUsingGet(ZipkinAppUtil.getBaseURL() + strURL, false);
 	}
 
-	
+	@Then("^verify the links in the navigation menu$")
+	public void verifyInvestigareSystemBehavior() throws Throwable {
+		homePage.getSystemBehavior();
+		Assert.assertTrue(homePage.getSystemBehavior().contains("Zipkin"));
+		Assert.assertEquals(homePage.getFindaTrace(), "Find a trace");
+		Assert.assertEquals(homePage.getDepencies(), "Dependencies");
+
+	}
+
+	@And("^verify the other links in the form$")
+	public void otherLinks() throws Throwable {
+
+		Assert.assertTrue(homePage.getgototrace().isDisplayed());
+
+		Assert.assertTrue(homePage.getservicename().isEnabled());
+
+		Assert.assertTrue(homePage.getspanname().isEnabled());
+
+		Assert.assertTrue(homePage.getstarttime().isEnabled());
+
+		Assert.assertTrue(homePage.getendtime().isEnabled());
+
+	}
+
 	@After({ "@zipkindhomepagenav" })
 	public void cleanUp(Scenario scenario) {
 		postProcess(scenario);
-		//BasePage.closeBrowser();
+		BasePage.closeBrowser();
 	}
 
 }
