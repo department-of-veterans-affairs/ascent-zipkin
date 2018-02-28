@@ -56,12 +56,6 @@
             <artifactId>zipkin-autoconfigure-storage-elasticsearch-http</artifactId>
             <version>${zipkin.version}</version>
         </dependency>
-         <!-- https://mvnrepository.com/artifact/net.sourceforge.htmlunit/htmlunit -->
-		<dependency>
-		    <groupId>net.sourceforge.htmlunit</groupId>
-		    <artifactId>htmlunit</artifactId>
-		    <version>2.29</version>
-		</dependency>
         <!-- okhttp dependency required for zipkin-autoconfigure-storage-elasticsearch-http -->
         <dependency>
 		    <groupId>com.squareup.okhttp3</groupId>
@@ -84,19 +78,17 @@
 			<groupId>gov.va.ascent</groupId>
 			<artifactId>ascent-platform-starter-logger</artifactId>
 		</dependency>
-    	
     	 <!-- logstash logback encoder -->
 		<dependency>
 			<groupId>net.logstash.logback</groupId>
 			<artifactId>logstash-logback-encoder</artifactId>
 		</dependency>
-		
+		<!-- Spring Boot Starter Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        
         <!-- Ascent Test Framework -->
 		<dependency>
 			<groupId>gov.va.ascent</groupId>
@@ -104,10 +96,14 @@
 			<version>${ascent.test.framework.version}</version>
 			<scope>test</scope>
 		</dependency>
-    	        <dependency>
-            <groupId>gov.va.ascent</groupId>
-            <artifactId>ascent-framework</artifactId>
-        </dependency>
+		<!-- https://mvnrepository.com/artifact/net.sourceforge.htmlunit/htmlunit -->
+		<dependency>
+		    <groupId>net.sourceforge.htmlunit</groupId>
+		    <artifactId>htmlunit</artifactId>
+		    <!-- Need this specific version to avoid errors for acceptance tests -->
+		    <version>2.26</version>
+		    <scope>test</scope>
+		</dependency>
        
     </dependencies>
     <build>
