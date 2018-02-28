@@ -53,8 +53,8 @@ services:
     - SECURE_CONNECT=true
     networks: 
       logging:
-          aliases:
-          - elastic.internal.vets-api.gov
+        aliases:
+        - elastic.internal.vets-api.gov
     ulimits:
       nproc: 655350
       nofile: 655350
