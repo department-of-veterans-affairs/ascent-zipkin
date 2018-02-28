@@ -39,7 +39,7 @@ public class ZipkinHomePageNav extends BaseStepDef {
 
 	@When("^the user is in zipkin dashboard page$")
 	public void makerequesustoappsurlGet() throws Throwable {
-		// invokeAPIUsingGet(ZipkinAppUtil.getBaseURL() + strURL, false);
+		
 	}
 
 	@Then("^verify the links in the navigation menu$")
