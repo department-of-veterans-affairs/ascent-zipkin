@@ -62,8 +62,6 @@ services:
         soft: -1
         hard: -1
     deploy:
-      replicas: 1
-      endpoint_mode: dnsrr
       placement:
         constraints:
         - node.role == worker
