@@ -54,7 +54,7 @@ services:
     networks: 
       logging:
         aliases:
-        - elastic.internal.vets-api.gov
+        - elastic.internal.vetservices.gov
     ulimits:
       nproc: 655350
       nofile: 655350
