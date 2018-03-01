@@ -17,6 +17,6 @@ microservicePipeline {
     ]
     testEnvironment = ['docker-compose.yml']
     serviceToTest = 'ascent-zipkin'
-    deployWaitTime = 300
+    deployWaitTime = 600
     testVaultTokenRole = "ascent-platform"
 }
