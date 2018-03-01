@@ -10,6 +10,19 @@ services:
       - discovery.server.peer.name=ascent-discovery-peer
     networks:
         - ascentnet
+    deploy:      
+      placement:
+        constraints:
+        - node.role == worker
+
+  consul:
+    image: consul:1.0.2
+    networks:
+    - ascentnet
+    deploy:      
+      placement:
+        constraints:
+        - node.role == worker
 
   ascent-discovery-peer:
     image: ascent/ascent-discovery
@@ -21,6 +34,10 @@ services:
     - discovery.server.peer.name=ascent-discovery
     networks:
     - ascentnet
+    deploy:      
+      placement:
+        constraints:
+        - node.role == worker
   
   ascent-config:
     image: ascent/ascent-config
@@ -32,6 +49,10 @@ services:
       - VAULT_SCHEME=https
     networks:
         - ascentnet
+    deploy:      
+      placement:
+        constraints:
+        - node.role == worker
   
   ascent-amqp:
     image: ascent/rabbitmq
@@ -40,6 +61,10 @@ services:
     environment:
     - VAULT_ADDR=${VAULT_ADDR}
     - VAULT_TOKEN=${VAULT_TOKEN}
+    deploy:      
+      placement:
+        constraints:
+        - node.role == worker
 
   ascent-zipkin:
     image: ascent/ascent-zipkin
@@ -52,6 +77,10 @@ services:
     networks:
         - ascentnet
         - logging
+    deploy:      
+      placement:
+        constraints:
+        - node.role == worker
 
   elasticsearch:
     image: ascent/ascent-elasticsearch
