@@ -32,6 +32,14 @@ services:
       - VAULT_SCHEME=https
     networks:
         - ascentnet
+  
+  ascent-amqp:
+    image: ascent/rabbitmq
+    networks:
+    - ascentnet
+    environment:
+    - VAULT_ADDR=${VAULT_ADDR}
+    - VAULT_TOKEN=${VAULT_TOKEN}
 
   ascent-zipkin:
     image: ascent/ascent-zipkin
