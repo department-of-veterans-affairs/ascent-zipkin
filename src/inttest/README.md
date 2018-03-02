@@ -19,9 +19,9 @@ src/inttest/java/gov/va/ascent/zipkin/runner - Cucumber runner class that contai
 
 src/inttest/resources/logback-test.xml - Logback Console Appender pattern and loggers defined for this project
 
-src/inttest/resources/config/vetsapi-ci.properties – CI configuration properties such as URL are specified here.
+src/inttest/resources/config/vetservices-ci.properties – CI configuration properties such as URL are specified here.
 
-src/inttest/resources/config/vetsapi-stage.properties – STAGE configuration properties such as URL are specified here.
+src/inttest/resources/config/vetservices-stage.properties – STAGE configuration properties such as URL are specified here.
 
 ## Execution ##
 **Command Line:** Use this command(s) to execute the zipkin acceptance test. 
