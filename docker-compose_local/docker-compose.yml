@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  ascent-zipkin:
+    image: ascent/ascent-zipkin
+    build: 
+      context: ../
+    ports:
+      - "8700:8700"
+    environment:
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_TOKEN=vaultroot
+    logging:
+      driver: fluentd
+      options:
+        fluentd-async-connect: "true"
+        fluentd-max-retries: "10"
+        fluentd-retry-wait: "30s"     
+    depends_on: 
+      - ascent-discovery
+      - ascent-config
+    networks: 
+      - ascentnet
+      - logging 
+networks:
+  ascentnet:
+    driver: bridge
+  logging:
+    driver: bridge
