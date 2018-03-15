@@ -3,7 +3,7 @@ services:
   ascent-zipkin:
     image: ascent/ascent-zipkin
     build: 
-      context: ../
+      context: ../../ascent-zipkin
     ports:
       - "8700:8700"
     environment:
