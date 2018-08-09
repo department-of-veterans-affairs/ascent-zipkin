@@ -54,18 +54,16 @@ zipkin:
     type: elasticsearch
     elasticsearch:
       cluster: ${ES_CLUSTER:docker-cluster}
+      # default elasctic internal URL still uses vets-api instead of vetservices
       hosts: ${ES_HOSTS:http://elastic.internal.vets-api.gov:9200}
       index: ${ES_INDEX:zipkin}
       index-shards: ${ES_INDEX_SHARDS:5}
       index-replicas: ${ES_INDEX_REPLICAS:1}
-      username: ${zipkin.storage.elasticsearch.username:zipkin}
-      password: ${zipkin.storage.elasticsearch.password:changeme}
 ---
 spring:
   profiles: aws-ci, aws-stage, aws-prod
 zipkin: 
   storage:
     elasticsearch:
+      # default elasctic internal URL still uses vets-api instead of vetservices
       hosts: ${ES_HOSTS:https://elastic.internal.vets-api.gov:9200}
-      
-
