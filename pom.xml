@@ -21,7 +21,10 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<zipkin.version>1.23.2</zipkin.version>
+		<!-- zipkin.version>1.23.2</zipkin.version -->
+		<zipkin.version>2.10.1</zipkin.version>
+		
+		<htmlunit.version>2.26</htmlunit.version>
 	</properties>
 
 	<dependencies>
@@ -45,6 +48,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.zipkin.java/zipkin -->
+		<dependency>
+			<groupId>io.zipkin.java</groupId>
+			<artifactId>zipkin</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+<!-- 
 		<dependency>
 			<groupId>io.zipkin.java</groupId>
 			<artifactId>zipkin-server</artifactId>
@@ -59,6 +69,7 @@
 			<artifactId>zipkin-autoconfigure-storage-elasticsearch-http</artifactId>
 			<version>${zipkin.version}</version>
 		</dependency>
+-->
 		<!-- okhttp dependency required for zipkin-autoconfigure-storage-elasticsearch-http -->
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
@@ -104,7 +115,7 @@
 			<groupId>net.sourceforge.htmlunit</groupId>
 			<artifactId>htmlunit</artifactId>
 			<!-- Need this specific version to avoid errors for acceptance tests -->
-			<version>2.26</version>
+			<version>${htmlunit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
