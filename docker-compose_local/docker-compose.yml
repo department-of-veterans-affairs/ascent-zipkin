@@ -10,6 +10,7 @@ services:
       - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
       - VAULT_ADDR=http://vault:8200
       - VAULT_TOKEN=vaultroot
+    # To use Kitematic in docker-demo, comment out this logging section
     logging:
       driver: fluentd
       options:
