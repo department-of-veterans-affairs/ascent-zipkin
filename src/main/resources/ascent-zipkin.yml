@@ -59,6 +59,18 @@ zipkin:
       index: ${ES_INDEX:zipkin}
       index-shards: ${ES_INDEX_SHARDS:5}
       index-replicas: ${ES_INDEX_REPLICAS:1}
+
+server:
+  ssl:
+    enabled: true
+    ######### These properties are set by the run-wrapper.sh script in the ascent-base container #########
+    # key-alias: @project.name@
+    # key-store: /app/certs/server.jks
+    # key-store-password: 
+    # trust-store: /app/certs/server-truststore.jks
+    # trust-store-password:
+    ######################################################################################################
+    client-auth: need
 ---
 spring:
   profiles: aws-ci, aws-stage, aws-prod
