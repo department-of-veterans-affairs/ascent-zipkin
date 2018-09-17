@@ -46,7 +46,7 @@ security:
 ---
 
 spring:
-  profiles: docker-demo, aws-ci, aws-stage, aws-prod
+  profiles: docker-demo, aws-ci, aws-dev, aws-stage, aws-prod
 zipkin:
   sleuth:
     enabled: false 
@@ -73,7 +73,7 @@ server:
     client-auth: need
 ---
 spring:
-  profiles: aws-ci, aws-stage, aws-prod
+  profiles: aws-ci, aws-dev, aws-stage, aws-prod
 zipkin: 
   storage:
     elasticsearch:
