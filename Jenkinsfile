@@ -15,7 +15,7 @@ microservicePipeline {
         "PLATFORM_VAULT_TOKEN": "ascent-platform"
     ]
     testEnvironment = ['docker-compose.yml', 'docker-compose.override.yml']
-    containerPort = 8761
+    containerPort = 8700
 
     // TODO!!! Need to have some kind of variable set for deploying to dev
     //     all we have right now is the perfEnvironment variable, which is
@@ -32,5 +32,4 @@ microservicePipeline {
 
     //Default Deployment Configuration Values
     //composeFiles = ["docker-compose.yml"]
-}
 }
