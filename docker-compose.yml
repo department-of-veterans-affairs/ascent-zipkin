@@ -21,7 +21,9 @@ services:
       placement:
         constraints:
         - node.role == worker
+    ports:
+        - "${PORT:-8761:8761}"
 networks:
  ascentnet:
     external:
-      name: ascent_ascentnet
+      name: ascentnet

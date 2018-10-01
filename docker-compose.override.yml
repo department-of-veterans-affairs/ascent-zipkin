@@ -9,7 +9,8 @@ services:
       # The application will not wait for the debugger to connect with this configuration. If you want the application to wait to
       # start until the debugger connects, change the "suspend=n" portion of the debug config to "suspend=y"
       - JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
-    logging: json-file
+    logging:
+      driver: json-file
     ports:
       - 8700:8700
       - 8000:8000
