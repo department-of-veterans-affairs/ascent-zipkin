@@ -4,16 +4,15 @@ services:
   ascent-zipkin:
     build:
       context: .
-    environment:
+    #environment:
       # The following line sets up the ability to connect a remote debugger process to port 8000 of the application.
       # The application will not wait for the debugger to connect with this configuration. If you want the application to wait to
       # start until the debugger connects, change the "suspend=n" portion of the debug config to "suspend=y"
-      - JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+      #- JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
     logging:
       driver: json-file
-    ports:
-      - 8700:8700
-      - 8000:8000
+    #ports:
+    #  - 8000:8000
     depends_on:
       - ascent-config
       - vault

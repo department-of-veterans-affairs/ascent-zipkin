@@ -1,9 +1,7 @@
 version: '3.3'
 services:
   ascent-zipkin:
-    image: ascent/ascent-zipkin
-    ports:
-    - 8700
+    image: ascent/ascent-zipkin:${RELEASE_VERSION:-latest}
     environment:
       - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-docker-demo}
       - VAULT_ADDR=${VAULT_ADDR:-http://vault:8200}
@@ -17,12 +15,12 @@ services:
         fluentd-max-retries: "10"
         fluentd-retry-wait: "30s"
     deploy:
-      replicas: ${ZIPKIN_REPLICAS:-1}
+      replicas: ${REPLICAS:-1}
       placement:
         constraints:
         - node.role == worker
     ports:
-        - "${PORT:-8761:8761}"
+        - "${PORT:-8700:8700}"
 networks:
  ascentnet:
     external:
