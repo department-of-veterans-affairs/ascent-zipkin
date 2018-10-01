@@ -1,130 +1,27 @@
 version: '3.3'
 services:
-  ascent-discovery:
-    image: ascent/ascent-discovery
-    hostname: ascent-discovery
-    environment:
-      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-aws-ci}
-      - VAULT_ADDR=${VAULT_ADDR}
-      - VAULT_TOKEN=${VAULT_TOKEN}
-      - discovery.server.peer.name=ascent-discovery-peer
-    networks:
-        - ascentnet
-    deploy:      
-      placement:
-        constraints:
-        - node.role == worker
-
-  consul:
-    image: consul:1.0.2
-    networks:
-    - ascentnet
-    deploy:      
-      placement:
-        constraints:
-        - node.role == worker
-
-  ascent-discovery-peer:
-    image: ascent/ascent-discovery
-    hostname: ascent-discovery-peer
-    environment:
-    - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-aws-ci}
-    - VAULT_ADDR=${VAULT_ADDR}
-    - VAULT_TOKEN=${VAULT_TOKEN}
-    - discovery.server.peer.name=ascent-discovery
-    networks:
-    - ascentnet
-    deploy:      
-      placement:
-        constraints:
-        - node.role == worker
-  
-  ascent-config:
-    image: ascent/ascent-config
-    environment:
-      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-aws-ci}
-      - VAULT_ADDR=${VAULT_ADDR}
-      - VAULT_TOKEN=${VAULT_TOKEN}
-      - VAULT_HOST=${VAULT_HOST}
-      - VAULT_PORT=${VAULT_PORT:-8200}
-      - VAULT_SCHEME=https
-    networks:
-        - ascentnet
-    deploy:      
-      placement:
-        constraints:
-        - node.role == worker
-  
-  ascent-amqp:
-    image: ascent/rabbitmq
-    networks:
-    - ascentnet
-    environment:
-    - VAULT_ADDR=${VAULT_ADDR}
-    - VAULT_TOKEN=${VAULT_TOKEN}
-    deploy:      
-      placement:
-        constraints:
-        - node.role == worker
-
   ascent-zipkin:
-    image: ascent/ascent-zipkin
-    ports:
-    - 8700
+    image: ascent/ascent-zipkin:${RELEASE_VERSION:-latest}
     environment:
-      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-aws-ci}
-      - VAULT_ADDR=${VAULT_ADDR}
-      - VAULT_TOKEN=${VAULT_TOKEN}
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-docker-demo}
+      - VAULT_ADDR=${VAULT_ADDR:-http://vault:8200}
+      - VAULT_TOKEN=${PLATFORM_TOKEN:-vaultroot}
     networks:
         - ascentnet
-        - logging
-    deploy:      
+    logging:
+      driver: fluentd
+      options:
+        fluentd-async-connect: "true"
+        fluentd-max-retries: "10"
+        fluentd-retry-wait: "30s"
+    deploy:
+      replicas: ${REPLICAS:-1}
       placement:
         constraints:
         - node.role == worker
-
-  elasticsearch:
-    image: ascent/ascent-elasticsearch
-    environment:
-    - VAULT_ADDR=${VAULT_ADDR}
-    - VAULT_TOKEN=${ELK_VAULT_TOKEN}
-    - SECURE_CONNECT=true
-    networks: 
-      logging:
-        aliases:
-        - elastic.internal.vets-api.gov
-    ulimits:
-      nproc: 655350
-      nofile: 655350
-      memlock:
-        soft: -1
-        hard: -1
-    deploy:
-      placement:
-        constraints:
-        - node.role == worker
-      resources:
-        reservations:
-          memory: 1536m
-  
-  es-config:
-    image: ascent/ascent-es-config
-    environment:
-    - VAULT_ADDR=${VAULT_ADDR}
-    - VAULT_TOKEN=${ELK_VAULT_TOKEN}
-    - SECURE_CONNECT=true
-    networks:
-    - logging
-    depends_on:
-    - elasticsearch
-    deploy:
-      restart_policy:
-        condition: none
-      placement:
-        constraints: [node.role == worker] 
-        
+    ports:
+        - "${PORT:-8700:8700}"
 networks:
-  ascentnet:
-    driver: overlay
-  logging:
-    driver: overlay
+ ascentnet:
+    external:
+      name: ascentnet
