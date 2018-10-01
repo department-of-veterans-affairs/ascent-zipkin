@@ -12,7 +12,7 @@ microservicePipeline {
     from the associated vault token role
     */
     vaultTokens = [
-        "PLATFORM_VAULT_TOKEN": "ascent-platform"
+        "PLATFORM_TOKEN": "ascent-platform"
     ]
     testEnvironment = ['docker-compose.yml', 'docker-compose.override.yml']
     containerPort = 8700
