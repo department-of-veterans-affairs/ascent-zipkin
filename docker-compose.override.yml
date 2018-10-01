@@ -39,7 +39,7 @@ services:
     image: ascent/ascent-discovery
     hostname: ascent-discovery
     ports:
-    - 8761:8761
+    - 8761
     environment:
     - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-docker-demo}
     - VAULT_ADDR=${VAULT_ADDR:-http://vault:8200}
@@ -52,7 +52,7 @@ services:
   ascent-config:
     image: ascent/ascent-config
     ports:
-    - 8760:8760
+    - 8760
     environment:
     - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-docker-demo}
     - VAULT_ADDR=${VAULT_ADDR:-http://vault:8200}
