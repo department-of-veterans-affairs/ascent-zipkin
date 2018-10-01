@@ -33,4 +33,3 @@ microservicePipeline {
     //Default Deployment Configuration Values
     //composeFiles = ["docker-compose.yml"]
 }
-}
