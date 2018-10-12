@@ -2,21 +2,20 @@ package gov.va.ascent.zipkin.steps;
 
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import gov.va.ascent.framework.log.AscentLogger;
+import gov.va.ascent.framework.log.AscentLoggerFactory;
 import gov.va.ascent.test.framework.restassured.BaseStepDef;
 import gov.va.ascent.zipkin.util.ZipkinAppUtil;
 
 public class ZipkinStatus extends BaseStepDef {
 
-	final Logger log = LoggerFactory.getLogger(ZipkinStatus.class);
+	final AscentLogger log = AscentLoggerFactory.getLogger(ZipkinStatus.class);
 
 	@Before({ "@zipkinstatus" })
 	public void setUpREST() {
