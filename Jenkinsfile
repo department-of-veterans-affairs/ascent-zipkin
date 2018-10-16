@@ -29,6 +29,7 @@ microservicePipeline {
     /*********  Deployment Configuration ***********/
     stackName = "zipkin"
     serviceName = "ascent-zipkin"
+    isPlatform = true
 
     //Default Deployment Configuration Values
     //composeFiles = ["docker-compose.yml"]
