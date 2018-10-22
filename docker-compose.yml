@@ -19,8 +19,18 @@ services:
       placement:
         constraints:
         - node.role == worker
+      update_config:
+        parallelism: 1
+        delay: 60s
+        monitor: 60s
+        failure_action: pause
     ports:
         - "${PORT:-8700:8700}"
+    healthcheck:
+        test: ["CMD", "/healthcheck", "--url", "https://localhost:8700/actuator/health"]
+        interval: 1m
+        timeout: 10s
+        retries: 3
 networks:
  ascentnet:
     external:
