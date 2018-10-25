@@ -25,8 +25,8 @@ endpoints:
 management.health.rabbit.enabled: false
 
 ####################################################################################
-# ZIPKIN locally uses in memory span store. Intent is to use ES as storage for Cloud 
-# environments which will require configuration similar to what is shown in profile 
+# ZIPKIN locally uses in memory span store. Intent is to use ES as storage for Cloud
+# environments which will require configuration similar to what is shown in profile
 # "docker-demo"
 #####################################################################################
 ---
@@ -42,20 +42,20 @@ zipkin:
       type: mem
 security:
   basic:
-    enabled: false      
+    enabled: false
 ---
 
 spring:
   profiles: docker-demo, aws-ci, aws-dev, aws-stage, aws-prod
 zipkin:
   sleuth:
-    enabled: false 
+    enabled: false
   storage:
     type: elasticsearch
     elasticsearch:
       cluster: ${ES_CLUSTER:docker-cluster}
       # default elasctic internal URL still uses vets-api instead of vetservices
-      hosts: ${ES_HOSTS:http://elastic.internal.vets-api.gov:9200}
+      hosts: ${ES_HOST:http://elastic.internal.vets-api.gov:9200}
       index: ${ES_INDEX:zipkin}
       index-shards: ${ES_INDEX_SHARDS:5}
       index-replicas: ${ES_INDEX_REPLICAS:1}
@@ -66,7 +66,7 @@ server:
     ######### These properties are set by the run-wrapper.sh script in the ascent-base container #########
     # key-alias: @project.name@
     # key-store: /app/certs/server.jks
-    # key-store-password: 
+    # key-store-password:
     # trust-store: /app/certs/server-truststore.jks
     # trust-store-password:
     ######################################################################################################
@@ -74,8 +74,8 @@ server:
 ---
 spring:
   profiles: aws-ci, aws-dev, aws-stage, aws-prod
-zipkin: 
+zipkin:
   storage:
     elasticsearch:
       # default elasctic internal URL still uses vets-api instead of vetservices
-      hosts: ${ES_HOSTS:https://elastic.internal.vets-api.gov:9200}
+      hosts: ${ES_HOST:https://elastic.internal.vets-api.gov:9200}
