@@ -6,6 +6,7 @@ services:
       - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-docker-demo}
       - VAULT_ADDR=${VAULT_ADDR:-http://vault:8200}
       - VAULT_TOKEN=${PLATFORM_TOKEN:-vaultroot}
+      - ES_HOST=${ES_HOST:-https://vpc-logging-dev-2q6xjy5atrwwyc7mw7cu3c2uae.us-gov-west-1.es.amazonaws.com}
     networks:
         - ascentnet
     logging:
