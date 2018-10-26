@@ -6,7 +6,7 @@ ADD target/ascent-zipkin.jar $JAR_FILE
 # Append app specific secrets to load to the base config
  RUN echo \
  'secret { \
-     format = "{{ key }}" \
+     format = "ascent.zipkin.{{ key }}" \
      no_prefix = true \
      path = "secret/ascent-zipkin" \
  }' >> $ENVCONSUL_CONFIG
