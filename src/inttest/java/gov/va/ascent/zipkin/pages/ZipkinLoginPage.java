@@ -16,7 +16,7 @@ public class ZipkinLoginPage extends BasePage{
     public void enterCredentialsandLogin() throws InterruptedException {
         try {
         		WebDriver driver = BasePage.getDriver();
-        		driver.get(ZipkinAppUtil.getBaseURL());
+        		driver.get(ZipkinAppUtil.getBaseURLWithNoAuth());
         		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         		
         		
