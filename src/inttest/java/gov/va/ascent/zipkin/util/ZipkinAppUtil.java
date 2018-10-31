@@ -12,6 +12,9 @@ public class ZipkinAppUtil {
 		return RESTConfigService.getBaseURL("data.'username'", "data.'password'");
 		
 	}
+	public static String getBaseURLWithNoAuth() {
+		return RESTConfigService.getInstance().getProperty("baseURL", true);		
+	}
 
 	
 }
