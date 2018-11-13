@@ -18,6 +18,8 @@ spring:
         multiplier: 1.2
         maxAttempts: 10
       token: ${VAULT_TOKEN:vaultroot}
+management:
+  context-path: /actuator
 eureka:
   client:
     #false by default in local dev mode
@@ -25,7 +27,11 @@ eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
     leaseExpirationDurationInSeconds: 30
+    statusPageUrlPath: ${management.context-path}${endpoints.info.path:/info}
+    healthCheckUrlPath: ${management.context-path}${endpoints.health.path:/health}
     metadata-map:
+      user.name: ${ascent.zipkin.username:admin}
+      user.password: ${ascent.zipkin.password:default}
       version:  "@project.version@"
       artifact: "@project.artifactId@"
       name: "@project.name@"
