@@ -1,15 +1,17 @@
-# README #
+# This repository is no longer maintained.
 
-This page documents all the steps that are necessary to get the **Ascent Zipkin** service up and running locally and other environments.
+Issue reports and pull requests will not be attended. 
 
-## What is this repository for? ##
+To deploy spring boot and spring cloud microservices on BIP Platform, refer to the following repositories:
 
-This is a repository for the ascent zipkin service that consumes the **instrumentation data and writes to elasticsearch** for audit purposes.  
+**DSVA**
+1. BIP Framework: https://github.com/department-of-veterans-affairs/bip-framework
+2. BIP Reference Person Example Service: https://github.com/department-of-veterans-affairs/bip-reference-person
+3. BIP Archetype Service: https://github.com/department-of-veterans-affairs/bip-archetype-service
+4. BIP Jenkins Library: https://github.com/department-of-veterans-affairs/os-svc-jenkins-lib/
 
-
-**Service Application Ports**
-* Zipkin - 8700
-
-See [Ascent-Zipkin](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/PLATFORM-:-Ascent-Zipkin) for additional details.
-
-See [Ascent Quick Start Guide](https://github.com/department-of-veterans-affairs/ascent-platform/wiki/DEV-:-Platform-Quick-Start-Guide) for the software prerequisites.
+**EPMO**
+1. BIP Framework: https://github.ec.va.gov/EPMO/bip-framework
+2. BIP Reference Person Example Service: https://github.ec.va.gov/EPMO/bip-reference-person
+3. BIP Archetype Service: https://github.ec.va.gov/EPMO/bip-archetype-service
+4. BIP Jenkins Library: https://github.ec.va.gov/EPMO/bip-jenkins-lib
